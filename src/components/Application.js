@@ -25,7 +25,7 @@ const days = [
 export default function Application(props) {
 
   const [day, setDay] = useState("Monday");
-  const [interviewer, setInterviewer] = useState(null);
+  // const [interviewer, setInterviewer] = useState(null);
 
   return (
 
