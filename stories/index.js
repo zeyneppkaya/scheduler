@@ -118,6 +118,7 @@ const interviewers = [
   { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
 ];
+console.log(interviewers);
 
 storiesOf("InterviewerList", module)
   .addParameters({
@@ -167,14 +168,14 @@ storiesOf("Appointment", module)
     message={"Could not delete appointment."}
     onClose={action("onClose")}
   />)
-  .add("Edit Form", () => <Form
+  .add("Edit", () => <Form
     student={"Zeynep Kaya"}
     interviewers={interviewers}
     interviewer={interviewer.id}
     onSave={action("onSave")}
     onCancel={action("onCancel")}
   />)
-  .add("Create From", () => <Form
+  .add("Create", () => <Form
     interviewers={interviewers}
     onSave={action("onSave")}
     onCancel={action("onCancel")}

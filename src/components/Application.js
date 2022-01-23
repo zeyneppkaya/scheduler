@@ -12,7 +12,7 @@ export default function Application(props) {
     day: "Monday",
     days: [],
     appointments: {},
-    interviewers: {}
+    interviewers: []
   });
   
   const setDay = day => setState({ ...state, day });
@@ -29,6 +29,7 @@ export default function Application(props) {
             time={appointment.time}
             interview={interview.interviewer}
             student={interview.student}
+            interviewers={state.interviewers}  
           />
         );
       }
@@ -39,6 +40,7 @@ export default function Application(props) {
             id={appointment.id}
             time={appointment.time}
             interview={null}
+            interviewers={state.interviewers} 
           />
         );
       }
@@ -50,7 +52,11 @@ export default function Application(props) {
       Promise.resolve(axios.get('http://localhost:8001/api/appointments')),
       Promise.resolve(axios.get('http://localhost:8001/api/interviewers'))
     ]).then((all) => {
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
+      const interviewers = [];
+      Object.values(all[2].data).forEach(interviewer => {
+        interviewers.push(interviewer)
+       })
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: interviewers}));
     })
   }, [])
 
