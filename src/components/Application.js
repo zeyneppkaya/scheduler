@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 const axios = require("axios");
 
 
@@ -12,7 +12,7 @@ export default function Application(props) {
     day: "Monday",
     days: [],
     appointments: {},
-    interviewers: []
+    interviewers: {}
   });
   
   const setDay = day => setState({ ...state, day });
@@ -20,7 +20,8 @@ export default function Application(props) {
 
   const schedule = appointments.map(appointment => {
     let interview = getInterview(state, appointment.interview);
-    console.log(interview)
+    let interviewers = getInterviewersForDay(state, state.day)
+ 
       if(interview){
         return (
           <Appointment
@@ -29,7 +30,7 @@ export default function Application(props) {
             time={appointment.time}
             interview={interview.interviewer}
             student={interview.student}
-            interviewers={state.interviewers}  
+            interviewers={interviewers}  
           />
         );
       }
@@ -40,7 +41,7 @@ export default function Application(props) {
             id={appointment.id}
             time={appointment.time}
             interview={null}
-            interviewers={state.interviewers} 
+            interviewers={interviewers} 
           />
         );
       }
@@ -52,11 +53,7 @@ export default function Application(props) {
       Promise.resolve(axios.get('http://localhost:8001/api/appointments')),
       Promise.resolve(axios.get('http://localhost:8001/api/interviewers'))
     ]).then((all) => {
-      const interviewers = [];
-      Object.values(all[2].data).forEach(interviewer => {
-        interviewers.push(interviewer)
-       })
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: interviewers}));
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
     })
   }, [])
 
