@@ -10,7 +10,7 @@ export default function(props){
   return(
     <Fragment>
       <Header time={props.time}></Header>
-      {props.interview ? <Show student={props.interview.student} interviewer={props.interview.interviewer} ></Show> : 
+      {props.interview ? <Show student={props.student} interviewer={props.interview} ></Show> : 
 
       props.id === "last" ? null:
       <Empty id={props.id}></Empty>}
