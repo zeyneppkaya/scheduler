@@ -14,37 +14,59 @@ export default function Application(props) {
     appointments: {},
     interviewers: {}
   });
-  
+
+  const bookInterview = (id, interview) => {
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.put(`/api/appointments/${id}`, { interview })
+      .then(res => {
+        console.log(res);
+        setState(
+          { ...state, appointments }
+        );
+    });
+  }
+
   const setDay = day => setState({ ...state, day });
   const appointments = getAppointmentsForDay(state, state.day);
 
   const schedule = appointments.map(appointment => {
     let interview = getInterview(state, appointment.interview);
     let interviewers = getInterviewersForDay(state, state.day)
- 
-      if(interview){
-        return (
-          <Appointment
-            key={appointment.id}
-            id={appointment.id}
-            time={appointment.time}
-            interview={interview.interviewer}
-            student={interview.student}
-            interviewers={interviewers}  
-          />
-        );
-      }
-      else {
-        return (
-          <Appointment
-            key={appointment.id}
-            id={appointment.id}
-            time={appointment.time}
-            interview={null}
-            interviewers={interviewers} 
-          />
-        );
-      }
+
+    if (interview) {
+      return (
+        <Appointment
+          key={appointment.id}
+          id={appointment.id}
+          time={appointment.time}
+          interview={interview.interviewer}
+          student={interview.student}
+          interviewers={interviewers}
+          bookInterview={bookInterview}
+        />
+      );
+    }
+    else {
+      return (
+        <Appointment
+          key={appointment.id}
+          id={appointment.id}
+          time={appointment.time}
+          interview={null}
+          interviewers={interviewers}
+          bookInterview={bookInterview}
+        />
+      );
+    }
   });
 
   useEffect(() => {
@@ -53,7 +75,7 @@ export default function Application(props) {
       Promise.resolve(axios.get('http://localhost:8001/api/appointments')),
       Promise.resolve(axios.get('http://localhost:8001/api/interviewers'))
     ]).then((all) => {
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
+      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     })
   }, [])
 

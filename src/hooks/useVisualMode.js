@@ -20,7 +20,7 @@ const useVisualMode = (initial) => {
     }
   }
 
-  return { mode, transition, back }
+  return { mode, transition, back, setMode }
 }
 
 export default useVisualMode;
