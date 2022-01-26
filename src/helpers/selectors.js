@@ -10,7 +10,6 @@ export function getAppointmentsForDay(state, day) {
     let result = [];
     for (const id of selectedDay.appointments) {
         const appointmentObject = state.appointments[id];
-        console.log(appointmentObject);
         result.push(appointmentObject);
     }
     return result;
@@ -37,8 +36,6 @@ export function getInterviewersForDay(state, day){
   let days = state.days;
   let interviewersStateDay;
 
-  console.log(day)
-  console.log(state)
 
   if(state.days.length < 1){
     return [];
