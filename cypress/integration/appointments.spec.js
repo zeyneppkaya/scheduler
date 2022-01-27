@@ -44,4 +44,4 @@ describe("Appointment", () => {
             .should("not.exist");
     });
 
-})
+});

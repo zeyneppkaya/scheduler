@@ -33,22 +33,22 @@ npm test
 ```sh
 npm run storybook
 ```
-## Booking Page
-![Student can't book an appointment without entering a name](docs/1.png)
+## Student can't book an appointment without entering a name.
+![home page](docs/1.png)
 
-## Booking
-![Booking an appointment](docs/2.png)
+## Booking an appointment.
+![Booking](docs/2.png)
 
-## Saving Form
-![Saving an appointment](docs/3.png)
+## Saving an appointment.
+![Saving Form](docs/3.png)
 
-## Confirm
-![Confirmation before deleting an appointment](docs/4.png)
+## Confirmation before deleting an appointment.
+![Confirm](docs/4.png)
 
-## Deleting
-![Deleting an appointment](docs/5.png)
+## Deleting an appointment.
+![Deleting](docs/5.png)
 
-## Fully Booked
-![No spots remaining for the day](docs/6.png)
+## No spots remaining for the day.
+![Fully Booked](docs/6.png)
 
 
