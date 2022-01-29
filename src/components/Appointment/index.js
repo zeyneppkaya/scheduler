@@ -58,6 +58,7 @@ export default function (props) {
 
   const closeError = () => {
     back();
+    back();
   }
 
   return (
@@ -90,11 +91,11 @@ export default function (props) {
           onConfirm={destroy} />}
       {mode === EDIT &&
         <Form
-          name={props.student}
-          interviewer={props.interview}
+          name={props.name ? props.name : props.interview.name}
+          interviewer={props.interviewer ? props.interviewer : props.interviewer}
+          interviewers={props.interviewers}
           onCancel={back}
           onSave={save}
-          interviewers={props.interviewers}
         />}
       {mode === ERROR_SAVE &&
         <Error

@@ -101,6 +101,7 @@ export default function useApplicationData() {
     const schedule = appointments.map(appointment => {
         let interview = getInterview(state, appointment.interview);
 
+        console.log(interview)
         if (interview) {
             return (
                 <Appointment
@@ -108,6 +109,7 @@ export default function useApplicationData() {
                     id={appointment.id}
                     time={appointment.time}
                     interview={interview.interviewer}
+                    interviewer={interview.interviewer.id}
                     student={interview.student}
                     interviewers={interviewers}
                     bookInterview={bookInterview}
@@ -115,6 +117,7 @@ export default function useApplicationData() {
                 />
             );
         }
+
         else {
             return (
                 <Appointment
