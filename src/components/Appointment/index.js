@@ -91,7 +91,7 @@ export default function (props) {
           onConfirm={destroy} />}
       {mode === EDIT &&
         <Form
-          name={props.name ? props.name : props.interview.name}
+          name={props.student}
           interviewer={props.interviewer ? props.interviewer : props.interviewer}
           interviewers={props.interviewers}
           onCancel={back}

@@ -12,10 +12,40 @@ Using the latest tools and techniques, we build and test a React application tha
 - A user can also cancel an existing interview.
 - Days display currently remaining spots and capture updates after each spot changes.
 
+## Scheduler-api 
+
+Scheduler api server is a second server responsible for providing data. We can make HTTP requests to the server to retrieve and alter appointment data. The API is limited to support the minimal requirements for the application.
+
 ## Setup
 
 Install dependencies with `npm install`.
 
+## List Of Dependencies
+```
+axios: "^0.25.0",
+classnames: "^2.2.6",
+normalize.css: "^8.0.1",
+react: "^16.9.0",
+react-dom: "^16.9.0",
+react-scripts: "3.0.0"
+```
+
+## List of DevDependencies
+```
+@babel/core: "^7.4.3",
+@storybook/addon-actions: "^5.0.10",
+@storybook/addon-backgrounds: "^5.0.10",
+@storybook/addon-links: "^5.0.10",
+@storybook/addons: "^5.0.10",
+@storybook/react: "^5.0.10",
+@testing-library/jest-dom: "^4.0.0",
+@testing-library/react: "^8.0.7",
+@testing-library/react-hooks: "^7.0.2",
+babel-loader: "^8.0.5",
+node-sass: "^4.14.0",
+prop-types: "^15.8.1",
+react-test-renderer: "^16.9.0"
+```
 ## Running Webpack Development Server
 
 ```sh
